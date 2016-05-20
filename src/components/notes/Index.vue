@@ -1,21 +1,19 @@
 <template>
-  <!-- add html here -->
-  <ol>
-    <li v-for="note in notes">
-      <pre>
-        {{note | json}}
-      </pre>
-    </li>
-  </ol>
+  <div class="notes">
+    <note
+      v-for="note in notes"
+      :note="note"
+      >
+    </note>
+  </div>
 </template>
+
 <script>
-// add js here
 import Firebase from 'firebase'
+import Note from './Note'
 export default {
-  data () {
-    return {
-      notes: []
-    }
+  components: {
+    Note
   },
   ready () {
     let firebase = new Firebase('https://crackling-inferno-7625.firebaseio.com/')
@@ -26,6 +24,9 @@ export default {
   }
 }
 </script>
+
 <style>
-/* add css here */
+  .notes{
+    padding: 0 100px;
+  }
 </style>
